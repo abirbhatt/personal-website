@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Smart Knee Brace project writeup by Abir Bhatt.">
+  <title>Smart Knee Brace - Abir Bhatt</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Legacy layout (sidebar) adjustments to match new site */
+    body { display: block; background: var(--background); color: var(--text); }
+
+    nav { display: none !important; }
+
+    nav a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #dcdcdc;
+    }
+
+    main { margin: 0 auto; padding: 0; max-width: 800px; width: 100%; }
+
+    h1 { margin-bottom: 0.5rem; }
+    .section h2 { border: none; padding-bottom: 0; margin: 2rem 0 0.75rem; border-bottom: 1px solid var(--border); }
+    .section { margin-bottom: 2rem; line-height: 1.7; }
+    a { color: var(--text); }
+
+    .section {
+      margin-bottom: 50px;
+      line-height: 1.5; 
+    }
+
+    .section h2 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+    }
+
+    .side-by-side {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: flex-start;
+    }
+
+    .side-by-side > div {
+      flex: 1;
+      min-width: 250px;
+      max-width: 50%;
+    }
+
+    .side-by-side img,
+    .side-by-side iframe {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .goals-constraints {
+      display: flex;
+      gap: 300px; 
+      padding-left: 50px; 
+      line-height: 1.7; 
+
+    }
+
+    .goals-constraints ul {
+      flex: 1;
+      padding-left: 25px;
+    }
+
+    .video-container {
+      display: flex;
+      gap: 16px;
+      padding-left: 0; 
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    .video-container iframe {
+      flex: 1 1 48%;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 14px;
+      padding: 15px;
+      background-color: #f7f7f7;
+      border-top: 1px solid #e0e0e0;
+      margin-top: 50px;
+    }
+    .initial-design {
+        padding-top: 100px; 
+    }
+    .flow-chart { 
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .results { 
+        padding-top: 50px; 
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="assignment8.html">Home</a>
+    <a href="assignment9.html">Projects</a>
+    <a href="origami.html">Origami</a>
+    <!-- <a href="#">Work Experience</a>
+    <a href="#">Skills</a>
+    <a href="#">Contact</a> -->
+  </nav>
+
+  <main>
+    <p><a href="index.html">← Back</a></p>
+    <h1>Smart Knee Brace (The PT-Squared)</h1>
+
+    <div class="section">
+      <h2>Introduction</h2>
+      <div class="side-by-side">
+        <div>
+          <p>
+            In February 2025, my friends and I entered the ASBME Make-A-Thon, an annual competition held at USC where 12-15 teams are given one weekend to design, build, and pitch a biomedical engineering product. That year, teams were tasked with designing a device for knee injury prevention, with applications to physical therapy. Our team spent the weekend brainstorming and iterating on our design under strict time constraints. 
+          </p>
+          <p>
+            I was in charge of the electrical and software side, which involved selecting sensors and electrical components, wiring them with a microcontroller, and writing the code to make everything function correctly. I also worked closely with my teammates to ensure that my work fit into the overall system. 
+          </p>
+          <p><a href="PT-Squared/Group 4 Final Presentation.pdf" target="_blank">View Presentation Slides (PDF)</a></p>
+        </div>
+        <div>
+          <img src="PT-Squared/img/team-photo.jpg" alt="Team Photo" />
+          <center>
+            <font size="2" color="black">
+              <p>
+                Abir B, 
+                <a href="https://www.linkedin.com/in/leocrampe/" target="_blank" style="color: inherit;">Leo C</a>, 
+                <a href="https://www.linkedin.com/in/joel-etchri/" target="_blank" style="color: inherit;">Joel E</a>, 
+                <a href="https://www.linkedin.com/in/vrindadgandhi/" target="_blank" style="color: inherit;">Vrinda G</a>, 
+                <a href="https://www.linkedin.com/in/zachary-eggleton-543a492a1/" target="_blank" style="color: inherit;">Zach E</a>, 
+                <a href="https://www.linkedin.com/in/brenda-aguirre-santeliz-b06843245/" target="_blank" style="color: inherit;">Brenda S</a>
+              </p>
+            </font>
+          </center>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+        <h2>Our Problem: Patellar Tendonitis (PT)</h2>
+        <div class="side-by-side">
+        <div><img src="PT-Squared/img/PTendonitis.jpg" alt="Team Photo" /></div>
+          <div>
+            <h3>What is it?</h3>
+            <p>
+                PT is an injury to the tendon connecting the kneecap to the shinbone.
+            </p>
+            <h3>What causes it?</h3>
+            <p>
+                Overuse from repeated stress on the patellar tendon.
+            </p>
+            <h3>Who is at risk?</h3>
+            <p>PT is common in athletes ages 15-30 who jump (basketball, volleyball), but anyone can get it.</p>
+            <h3>Why is it important?</h3> 
+            <p>The patellar tendon helps with kicking, running, and jumping—hence the name "Jumper's Knee."</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Design Goals & Constraints</h2>
+        <div class="goals-constraints">
+          <div>
+            <h3>Design Goals</h3>
+            <ul>
+              <li>Alert the user when PT injury is at risk.</li>
+              <li>Provide the user with vibration therapy on PT.</li>
+              <li>Comfortable and cost-effective design.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Constraints</h3>
+            <ul>
+              <li>Given a variety of electronics, inputs, and outputs. </li>
+              <li>CAD and 3D-Printing allowed.</li>
+              <li>48 hours to complete the product.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    <div class="section">
+      <h2>Initial Design</h2>
+      <div class="side-by-side">
+        <div class="initial-design">
+            <p>
+                Physical therapy patients recovering from Patellar Tendonitis injuries typically perform squats to strengthen the tendon. Unfortunately, it is easy for them to reinjure themselves with bad form. 
+            </p>
+            <br>
+            <p>
+                We decided to create a smart knee brace that alerts the user of poor squat form and applies vibration therapy to the tendon. The idea was to take an old knee brace, attach two 3D-printed parts to the left/right sides, and mount the electronics on them.
+            </p>
+        </div>
+        <div><img src="PT-Squared/img/Initial-Design.jpg" alt="Initial Design" /></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Mechanical Design</h2>
+      <div class="side-by-side">
+        <div>
+            <img src="PT-Squared/img/CAD-design.jpg" alt="CAD Design" />
+            <br>
+            <br>
+            <p>
+                My teammates designed a brace attachment in Fusion 360 to give the brace more physical functionality. The two rectangular ends have holes that attach to the brace, and can rotate so that the user is able to bend their knee. They are sandwiched between two plates, and the top one has an extruded cut for a small breadboard to fit inside. The image above was our first iteration, and after printing it we realized that the extruded cut was too small. The final print is shown to the right. 
+            </p>
+        </div>
+        <div>
+            <img src="PT-Squared/img/3D-Print.jpg" alt="3D Printed Part" style="margin-top: 20px;" />
+          </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Electronics</h2>
+      <div class="side-by-side">
+        <div>
+            <img src="PT-Squared/img/circuit.jpg" alt="Circuit Photo" />
+            <p>Circuit before wire management.</p>
+          </div>
+        <div>
+            <img src="PT-Squared/img/circuit-diagram.png" alt="Circuit Diagram" style="margin-top: 20px;" />
+            <br>
+            <p>
+                For the electronics, I used an Arduino Uno and several inputs/outputs. In order for the brace to detect poor squat form, I chose an MPU6050 accelerometer, which was placed on the side of the brace to measure the X-Z angle during a squat. In other words, if the user’s knees caved in, the accelerometer would tilt farther to the left, causing the angle measured to be greater. When this threshold is crossed, a piezo buzzer beeps. To provide the user with vibration therapy, I soldered on a 3V vibration motor. Although this is a digital output, there is an Arduino library that uses PWM to allow the motor to operate at more than two strengths. I also wired two buttons and an LED so that the user can easily switch between both modes.
+            </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Software</h2>
+      <p>Below is the Arduino code I wrote for this project along with a flow chart.</p>
+      <div class="side-by-side">
+        <div style="max-height: 375px; overflow: auto; background-color: #f4f4f4; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 14px;">
+          <pre><code>
+            #include <Adafruit_MPU6050.h>
+              #include <Adafruit_Sensor.h>
+              #include <Wire.h>
+              #include <VibrationMotor.h>
+              
+              #define BUZZER_PIN 12
+              #define BUTTON_PIN 13
+              #define LED1_PIN 10
+              #define LED2_PIN 8
+              const float CAVING_IN = -4; 
+              const int motorPin = 11; 
+              
+              VibrationMotor myVibrationMotor(motorPin); 
+              
+              Adafruit_MPU6050 mpu;
+              bool mode = false;  
+              bool lastButtonState = HIGH;
+              bool buttonState = HIGH;
+              
+              void setup() {
+                Serial.begin(115200);
+                while (!Serial) delay(10);
+              
+                Serial.println("Adafruit MPU6050 test!");
+              
+                if (!mpu.begin()) {
+                  Serial.println("Failed to find MPU6050 chip");
+                  while (1) delay(10);
+                }
+                Serial.println("MPU6050 Found!");
+              
+              
+                mpu.setAccelerometerRange(MPU6050_RANGE_8_G);
+                mpu.setGyroRange(MPU6050_RANGE_500_DEG);
+                mpu.setFilterBandwidth(MPU6050_BAND_21_HZ);
+                pinMode(BUZZER_PIN, OUTPUT);  
+                digitalWrite(BUZZER_PIN, LOW);
+              
+                pinMode(LED1_PIN, OUTPUT);
+                pinMode(LED2_PIN, OUTPUT);
+                pinMode(BUTTON_PIN, INPUT_PULLUP);
+              
+                digitalWrite(LED1_PIN, HIGH);
+                digitalWrite(LED2_PIN, LOW);
+              
+              
+                Serial.println("\nReading accelerometer and gyroscope data...\n");
+              }
+              
+              void loop() {
+                int intensity = 255; 
+                  buttonState = digitalRead(BUTTON_PIN);
+              
+                // Detect button press (falling edge detection)
+                if (buttonState == LOW && lastButtonState == HIGH) {
+                  mode = !mode;  // Toggle mode
+              
+                  if (mode) {
+                    // Mode 2: Accelerometer OFF
+                    digitalWrite(LED1_PIN, LOW);
+                    digitalWrite(LED2_PIN, HIGH);
+                    noTone(BUZZER_PIN); // Stop buzzer
+                    Serial.println("Mode 2: Accelerometer OFF");
+                    myVibrationMotor.on(intensity);
+                    // delay(2500); 
+                    // myVibrationMotor.off();  
+                  } else {
+                    // Mode 1: Accelerometer ON
+                    myVibrationMotor.off(); 
+                    digitalWrite(LED1_PIN, HIGH);
+                    digitalWrite(LED2_PIN, LOW);
+                    Serial.println("Mode 1: Accelerometer ON");
+                  }
+              
+                  delay(200);  // Debounce delay
+                }
+              
+                lastButtonState = buttonState;
+              
+                // Only run accelerometer logic in Mode 1
+                if (!mode) {
+                  sensors_event_t a, g, temp;
+                  mpu.getEvent(&a, &g, &temp);
+              
+                  // Detect knees caving in
+                  bool buzzing = false;
+                  if (a.acceleration.z < CAVING_IN) {  
+                    Serial.println("Knees Caving In!");
+                    buzzing = true;
+                  }
+              
+                  // Control buzzer
+                  if (buzzing) {
+                    tone(BUZZER_PIN, 1000);
+                  } else {
+                    noTone(BUZZER_PIN);  
+                  }
+              
+                  // Print accelerometer data
+                  Serial.print("Acceleration X: ");
+                  Serial.print(a.acceleration.x, 2);
+                  Serial.print(" m/s^2, Y: ");
+                  Serial.print(a.acceleration.y, 2);
+                  Serial.print(" m/s^2, Z: ");
+                  Serial.print(a.acceleration.z, 2);
+                  Serial.println(" m/s^2");
+              
+                  Serial.println("-------------------------------");
+                }
+              
+                delay(500);
+              }
+            </code></pre>
+        </div>
+        <div>
+          <img src="PT-Squared/img/flow_chart.jpg" alt="Flow Chart" style="margin-top: 20px;" />
+        </div>
+      </div>
+
+    </div>
+
+    <div class="section">
+      <h2>Final Design & Demonstration</h2>
+      <p>Below are demos of both modes. The idea is that the user can improve their squat form during physical therapy, then turn on the vibration motor during the car ride home. </p>
+      <div class="video-container">
+        <iframe width="450" height="275" src="https://www.youtube.com/embed/NNh4c8_QDiA?si=wa2SEk3AhYOvP2DX" frameborder="0" allowfullscreen></iframe>
+        <iframe width="450" height="275" src="https://www.youtube.com/embed/7ZOyYrbt2Wg?si=5iWBoFTdqSZLMaaG" frameborder="0" allowfullscreen></iframe>
+      </div>
+        </div>
+      <div class="side-by-side">
+        <div>
+      <img src="PT-Squared/img/project-pic-1.png" alt="Final Design" />
+        </div>
+        <div>
+      <img src="PT-Squared/img/project-pic-2.png" alt="Final Design" />
+      <br>
+      <br>
+      <br>
+      <img src="PT-Squared/img/knee-brace.jpg" alt="Final Design" />
+    </div>
+      </div>
+      <div class="section">
+        <h2>Results</h2>
+        <div class="side-by-side">
+          <div class="results">
+            <h3>We won second place!</h3>
+            <p>
+                At the end of the Make-A-Thon, we pitched our product to 12 judges, who were professionals in the biomedical device and physical therapy industries. Our team won second place and we were awarded $600 for our efforts!
+            </p>
+          </div>
+          <div><img src="PT-Squared/img/presenting.jpg" alt="Team Photo" /></div>
+        </div>
+      </div>
+
+    <footer>
+      <p>Coded by Abir Bhatt @ 2025</p>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Electric Guitar Project Writeup by Abir Bhatt">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+  <title>Electric Guitar - Abir Bhatt</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Integrate with new site styles */
+    body { display: block; background: var(--background); color: var(--text); }
+
+    nav { display: none !important; }
+
+    nav a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #dcdcdc;
+    }
+
+    main { margin: 0 auto; padding: 0; max-width: 800px; width: 100%; }
+
+    h1 { margin-bottom: 0.5rem; }
+    .section h2 { border: none; padding-bottom: 0; margin: 2rem 0 0.75rem; border-bottom: 1px solid var(--border); }
+    .section { margin-bottom: 2rem; line-height: 1.7; }
+    a { color: var(--text); }
+
+    .section {
+      margin-bottom: 50px;
+      line-height: 1.5; 
+    }
+
+    .section h2 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+    }
+
+    .side-by-side {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: flex-start;
+    }
+
+    .side-by-side > div {
+      flex: 1;
+      min-width: 250px;
+      max-width: 50%;
+    }
+
+    .side-by-side img,
+    .side-by-side iframe {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    footer { text-align: center; font-size: 14px; padding: 15px; border-top: 1px solid var(--border); margin-top: 50px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="assignment8.html">Home</a>
+    <a href="assignment9.html">Projects</a>
+    <a href="origami.html">Origami</a>
+    <!-- <a href="#">Work Experience</a>
+    <a href="#">Skills</a>
+    <a href="#">Contact</a> -->
+  </nav>
+
+  <main>
+    <p><a href="index.html">← Back</a></p>
+    <h1>Electric Guitar</h1>
+
+    <div class="section">
+      <h2>Introduction</h2>
+      <div class="side-by-side">
+        <div>
+          <p>For a linear circuits class, I was given the last month of the semester to design and construct an electric guitar. This project reinforced concepts learned in the course, such as RC filters, operational amplifiers, PCB design, and using EE lab equipment for testing.</p>
+        </div>
+        <div><img src="Electrical Guitar/guitar.jpg" alt="Guitar Photo" /></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Electrical Design: Twin-T Notch Filter</h2>
+      <div class="side-by-side">
+        <div><img src="Electrical Guitar/filter_circuit.png" alt="Twin-T Filter Diagram" />
+          <br>
+          <br>
+          <br>
+          <img src="Electrical Guitar/filter_math.jpg" alt="Filter Math" />
+        </div>
+        <div>
+          <p>An electric guitar makes sounds by converting string vibrations into electrical signals. However, there is often interference between these signals, such as unwanted frequencies or noise. For this reason, I had to use a filter to suppress the G string (196 Hz) while letting the other strings pass through. </p>
+          <p>
+            I used a passive twin-T bandstop (notch) filters, as shown to the left. This has a gain function: 
+          </p>
+          
+          <p>
+            $$
+            \frac{V_{\text{out}}}{V_{\text{in}}} = \frac{K(s^2 + \omega_o^2)}{s^2 + \frac{s \omega_o}{Q} + \omega_o^2}
+            $$
+          </p>
+          
+          <p>
+            I was required to design it so that \( Q = 8 \) and \( f = 196  \mathrm{Hz} \). Additionally, I ensured that the feedback factor, \( \alpha \), was less than 1 so that the notch is stable and narrows at the target frequency. 
+          </p>
+
+          <p>
+            After some calculations, I chose R = 3690 \(\Omega \) and C = 220 \(\mathrm{nF} \). 
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>LTspice Simulation</h2>
+      <div class="side-by-side">
+        <div>
+          <p><p>
+            In the final circuit design, I added three op amps, which serve different purposes.
+            U1 is a unity-gain buffer, which isolates the filter output.
+            U2 takes the output from U1, scales it using a voltage divider (RQ1 and RQ2), and feeds it back into the filter,
+            ensuring that \( \alpha = \frac{RQ1}{RQ1 + RQ2} \) is less than 1.
+            U3 is a non-inverting op amp that amplifies the supply voltage by a factor of 11, since its gain is
+            \( 1 + \frac{R6}{R5} \).
+          </p></p>
+          <br>
+          <br>
+          <br>
+          <img src="Electrical Guitar/LTSpice_Simulation.png" alt="LTspice Simulation" />
+        </div>
+        <div><img src="Electrical Guitar/LTSpice_Circuit.png" alt="LTspice Circuit" />
+            <br> 
+            <br>
+            <br>
+            <p>I modeled the circuit in LTspice and ran an AC sweep. This confirmed a notch at 196 Hz, as shown to the left. </p>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>PCB Design in KiCad</h2>
+      <div class="side-by-side">
+        <div>
+          <p>
+            I recreated the circuit in KiCad, as shown to the right. I downloaded the missing component schematics/footprints from DigiKey. In the filter, I replaced two of the resistors with potentiometers so they could be set to exactly 3690 \(\Omega \). For the rest of the components, I used 0805 SMD hand-solder footprints, as those will be provided in the soldering process. 
+          </p>
+          <p>In the PCB editor, I created a four-layer board with power and ground planes. I used vias to efficiently route traces and added my name in silkscreen.</p>
+
+          <p>
+            A 3D Model of the PCB is shown below. 
+          </p>
+          <img src="Electrical Guitar/3d-model.jpg" alt="3D Model"/>
+        </div>
+        <div>
+            <br>
+            <img src="Electrical Guitar/schematic.jpg" alt="PCB Schematic"/>
+            <br>
+            <br>
+            <img src="Electrical Guitar/pcb.jpg" alt="PCB"/>
+            
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <h2>PCB Soldering</h2>
+      <div class="side-by-side">
+        <div><img src="Electrical Guitar/pcb_soldering.jpg" alt="Abir Soldering PCB" />
+        </div>
+        <div>
+          <p>
+            After the PCB was manufactured, I had to solder it. The ICs, capacitors, and resistors were SMD type, so I used used a stencil to spread solder paste then carefully placed each component on the board. I used a hot plate to bake the PCB. drying the solder.
+          </p>
+          <p>
+            The pin headers and potentiometers were THT type, so I soldered them normally using an iron. 
+          </p>
+          <br>
+          <img src="Electrical Guitar/soldered_pcb.JPG" alt="Soldered PCB" />
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Mechanical Fabrication</h2>
+      <div class="side-by-side">
+        <div>
+          <p>I was initially given a rectangular piece of wood, but I cut and shaped it to look more like a guitar with help from the MakerSpace staff.</p>
+          <br>
+          <p>I also drilled six holes and hammered in piano pins. </p>
+          <br>
+          <br>
+          <div><img src="Electrical Guitar/wood-side.JPG" alt="Guitar Body" /></div>
+        </div>
+        <div><img src="Electrical Guitar/piano-pins.JPG" alt="Piano Pins" /></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Next Steps</h2>
+      <p>I will test the PCB and integrate it with the guitar in the next week.</p>
+    </div>
+
+    <footer>
+      <p>Coded by Abir Bhatt @ 2025</p>
+    </footer>
+  </main>
+</body>
+</html>

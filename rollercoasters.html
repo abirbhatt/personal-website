@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roller Coasters - Abir Bhatt</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Coaster & Park Rankings</h1>
+            <p class="subtitle">Thoosie Things</p>
+        </header>
+
+        <main>
+            <p><a href="index.html">← Back</a></p>
+            <section class="section">
+                <div class="tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" data-tab="coasters">Coaster rankings</button>
+                        <button class="tab-button" data-tab="parks">Park rankings</button>
+                    </div>
+
+                    <div id="tab-coasters" class="tab-panel active">
+                        <p class="about">Total coasters ridden: <strong>104</strong></p>
+                        <h2>Top 25</h2>
+                        <div class="table-wrap">
+                            <table class="table" id="coaster-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Park</th>
+                                        <th>Location</th>
+                                        <th>Year Rode</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>1</td><td>Steel Vengeance</td><td>Cedar Point</td><td>Sandusky, OH</td><td>2019</td></tr>
+                                    <tr><td>2</td><td>El Toro</td><td>Six Flags Great Adventure</td><td>Jackson, NJ</td><td>2011</td></tr>
+                                    <tr><td>3</td><td>Maverick</td><td>Cedar Point</td><td>Sandusky, OH</td><td>2019</td></tr>
+                                    <tr><td>4</td><td>Top Thrill Dragster [DEFUNCT]</td><td>Cedar Point</td><td>Sandusky, OH</td><td>2019</td></tr>
+                                    <tr><td>5</td><td>Twisted Colossus</td><td>Six Flags Magic Mountain</td><td>Valencia, CA</td><td>2025</td></tr>
+                                    <tr><td>6</td><td>Diamondback</td><td>Kings Island</td><td>Mason, OH</td><td>2018</td></tr>
+                                    <tr><td>7</td><td>Millenium Force</td><td>Cedar Point</td><td>Sandusky, OH</td><td>2019</td></tr>
+                                    <tr><td>8</td><td>Mystic Timbers</td><td>Kings Island</td><td>Mason, OH</td><td>2018</td></tr>
+                                    <tr><td>9</td><td>Gold Striker</td><td>California's Great America</td><td>Santa Clara, CA</td><td>2013</td></tr>
+                                    <tr><td>10</td><td>GhostRider</td><td>Knott's Berry Farm</td><td>Buena Park, CA</td><td>2024</td></tr>
+                                    <tr><td>11</td><td>X2</td><td>Six Flags Magic Mountain</td><td>Valencia, CA</td><td>2025</td></tr>
+                                    <tr><td>12</td><td>RailBlazer</td><td>California's Great America</td><td>Santa Clara, CA</td><td>2018</td></tr>
+                                    <tr><td>13</td><td>Tatsu</td><td>Six Flags Magic Mountain</td><td>Valencia, CA</td><td>2018</td></tr>
+                                    <tr><td>14</td><td>Incredible Hulk</td><td>Islands of Adventure</td><td>Orlando, FL</td><td>2011</td></tr>
+                                    <tr><td>15</td><td>Magnum XL-200</td><td>Cedar Point</td><td>Sandusky, OH</td><td>2019</td></tr>
+                                    <tr><td>16</td><td>Dragon Challenge (Chinese Fireball) [DEFUNCT]</td><td>Islands of Adventure</td><td>Orlando, FL</td><td>2011</td></tr>
+                                    <tr><td>17</td><td>Beast</td><td>Kings Island</td><td>Mason, OH</td><td>2018</td></tr>
+                                    <tr><td>18</td><td>Kingda Ka [DEFUNCT]</td><td>Six Flags Great Adventure</td><td>Jackson, NJ</td><td>2011</td></tr>
+                                    <tr><td>19</td><td>Medusa</td><td>Six Flags Discovery Kingdom</td><td>Vallejo, CA</td><td>2013</td></tr>
+                                    <tr><td>20</td><td>Raptor</td><td>Cedar Point</td><td>Sandusky, OH</td><td>2018</td></tr>
+                                    <tr><td>21</td><td>Xcelerator</td><td>Knott's Berry Farm</td><td>Buena Park, CA</td><td>2024</td></tr>
+                                    <tr><td>22</td><td>Dragon Challenge (Hungarian Horntail) [DEFUNCT]</td><td>Islands of Adventure</td><td>Orlando, FL</td><td>2011</td></tr>
+                                    <tr><td>23</td><td>Wonder Woman</td><td>Six Flags Magic Mountain</td><td>Valencia, CA</td><td>2025</td></tr>
+                                    <tr><td>24</td><td>Flight Deck</td><td>California's Great America</td><td>Santa Clara, CA</td><td>2010</td></tr>
+                                    <tr><td>25</td><td>Joker</td><td>Six Flags Discovery Kingdom</td><td>Vallejo, CA</td><td>2016</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="tab-parks" class="tab-panel">
+                        <h2>Park rankings</h2>
+                        <p class="about">Scoring system: Coasters (15), Theming/Atmosphere (10), Other Rides (10), Operations (5), Food (5) — Overall out of 45.</p>
+                        <div class="table-wrap">
+                            <table class="table" id="parks-table">
+                                <thead>
+                                    <tr>
+                                        <th>Park Name</th>
+                                        <th>Last Visit</th>
+                                        <th>Coasters (15)</th>
+                                        <th>Theming/Atmosphere (10)</th>
+                                        <th>Other Rides (10)</th>
+                                        <th>Operations (5)</th>
+                                        <th>Food (5)</th>
+                                        <th>Overall</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Islands of Adventure</td><td>2011</td><td>9</td><td>9</td><td>9</td><td>4</td><td>4.5</td><td><strong>35.5/45</strong></td></tr>
+                                    <tr><td>Cedar Point</td><td>2019</td><td>15</td><td>7</td><td>9</td><td>4</td><td>4</td><td><strong>34/45</strong></td></tr>
+                                    <tr><td>Disneyland</td><td>2018</td><td>5</td><td>9</td><td>10</td><td>5</td><td>5</td><td><strong>34/45</strong></td></tr>
+                                    <tr><td>Kings Island</td><td>2019</td><td>12.5</td><td>6</td><td>6</td><td>4.5</td><td>3.5</td><td><strong>32.5/45</strong></td></tr>
+                                    <tr><td>Knott's Berry Farm</td><td>2024</td><td>11</td><td>9</td><td>6</td><td>3</td><td>3</td><td><strong>32/45</strong></td></tr>
+                                    <tr><td>Six Flags Magic Mountain</td><td>2025</td><td>14.5</td><td>6</td><td>6</td><td>2.5</td><td>3</td><td><strong>32/45</strong></td></tr>
+                                    <tr><td>Disney California Adventure</td><td>2018</td><td>4</td><td>9</td><td>9.5</td><td>4.5</td><td>5</td><td><strong>32/45</strong></td></tr>
+                                    <tr><td>Six Flags Great Adventure</td><td>2011</td><td>12.5</td><td>5</td><td>6</td><td>3</td><td>2.5</td><td><strong>29/45</strong></td></tr>
+                                    <tr><td>California's Great America</td><td>2025</td><td>10</td><td>5</td><td>7</td><td>2.5</td><td>3</td><td><strong>27.5/45</strong></td></tr>
+                                    <tr><td>Epcot</td><td>2011</td><td>0</td><td>8.5</td><td>9.5</td><td>5</td><td>4.5</td><td><strong>27.5/45</strong></td></tr>
+                                    <tr><td>Six Flags Discovery Kingdom</td><td>2023</td><td>10</td><td>3</td><td>5</td><td>1.5</td><td>1</td><td><strong>20.5/45</strong></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="index.html">home</a>
+                <a href="mailto:your.email@example.com">email</a>
+            </div>
+            <p class="copyright">© 2025 Abir Bhatt</p>
+        </footer>
+    </div>
+
+    <script>
+    // Minimal tab switcher
+    document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const target = btn.dataset.tab;
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            document.getElementById(`tab-${target}`).classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html>
