@@ -20,7 +20,7 @@ body {
   line-height: 1.6;
   color: var(--text);
   background: var(--background);
-  padding: 1.5rem 1rem;
+  padding: 1rem 1rem;
   font-size: 16px;
 }
 
@@ -242,7 +242,8 @@ ol.list {
   margin: 0;
   overflow-y: auto;
   flex: 1;
-  min-height: 0;
+  min-height: 200px;
+  max-height: calc(100vh - 400px);
 }
 
 .project-list::-webkit-scrollbar {
@@ -336,7 +337,8 @@ ol.list {
   }
 
   .project-list {
-    max-height: 240px;
+    max-height: 300px;
+    min-height: 180px;
   }
 
   h1 {
